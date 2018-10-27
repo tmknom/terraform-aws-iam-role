@@ -29,11 +29,29 @@ cd terraform-aws-sample
 
 ## Inputs
 
-Write your Terraform module inputs.
+| Name               | Description                                                                    |  Type  |        Default         | Required |
+| ------------------ | ------------------------------------------------------------------------------ | :----: | :--------------------: | :------: |
+| assume_role_policy | The policy that grants an entity permission to assume the role.                | string |           -            |   yes    |
+| description        | The description of the role and the policy.                                    | string | `Managed by Terraform` |    no    |
+| name               | The name of the role. If omitted, Terraform will assign a random, unique name. | string |           -            |   yes    |
+| path               | Path in which to create the role and the policy.                               | string |          `/`           |    no    |
+| policy             | The policy document. This is a JSON formatted string.                          | string |           -            |   yes    |
 
 ## Outputs
 
-Write your Terraform module outputs.
+| Name                   | Description                                         |
+| ---------------------- | --------------------------------------------------- |
+| iam_policy_arn         | The ARN assigned by AWS to this policy.             |
+| iam_policy_description | The description of the policy.                      |
+| iam_policy_document    | The policy document.                                |
+| iam_policy_id          | The policy's ID.                                    |
+| iam_policy_name        | The name of the policy.                             |
+| iam_policy_path        | The path of the policy in IAM.                      |
+| iam_role_arn           | The Amazon Resource Name (ARN) specifying the role. |
+| iam_role_create_date   | The creation date of the IAM role.                  |
+| iam_role_description   | The description of the role.                        |
+| iam_role_name          | The name of the role.                               |
+| iam_role_unique_id     | The stable and unique string identifying the role.  |
 
 ## Development
 
