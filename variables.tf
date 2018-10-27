@@ -28,3 +28,9 @@ variable "description" {
   type        = "string"
   description = "The description of the role and the policy."
 }
+
+variable "max_session_duration" {
+  default     = "3600"
+  type        = "string"
+  description = "The maximum session duration (in seconds) that you want to set for the specified role."
+}
