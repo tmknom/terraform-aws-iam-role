@@ -10,7 +10,7 @@ resource "aws_iam_role" "default" {
   path        = "${var.path}"
   description = "${var.description}"
 
-  max_session_duration = "${var.max_session_duration}"
+  max_session_duration  = "${var.max_session_duration}"
   force_detach_policies = "${var.force_detach_policies}"
 }
 
