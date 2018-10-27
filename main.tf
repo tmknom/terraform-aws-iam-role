@@ -11,6 +11,7 @@ resource "aws_iam_role" "default" {
   description = "${var.description}"
 
   max_session_duration = "${var.max_session_duration}"
+  force_detach_policies = "${var.force_detach_policies}"
 }
 
 # https://www.terraform.io/docs/providers/aws/r/iam_policy.html
