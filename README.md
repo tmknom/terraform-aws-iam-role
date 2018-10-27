@@ -4,15 +4,75 @@
 [![GitHub tag](https://img.shields.io/github/tag/tmknom/terraform-aws-iam-role.svg)](https://registry.terraform.io/modules/tmknom/iam-role/aws)
 [![License](https://img.shields.io/github/license/tmknom/terraform-aws-iam-role.svg)](https://opensource.org/licenses/Apache-2.0)
 
-Terraform module template following [Standard Module Structure](https://www.terraform.io/docs/modules/create.html#standard-module-structure).
+Terraform module which creates IAM Role and IAM Policy resources on AWS.
+
+## Description
+
+Provision IAM Role and its own [Customer Managed Policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html#customer-managed-policies).
+This module provides recommended settings.
+
+- Use managed policies instead of inline policies
 
 ## Usage
 
-Named `terraform-<PROVIDER>-<NAME>`. Module repositories must use this three-part name format.
+### Minimal
 
-```sh
-curl -fsSL https://raw.githubusercontent.com/tmknom/terraform-aws-iam-role/master/install | sh -s terraform-aws-sample
-cd terraform-aws-sample
+```hcl
+module "iam_role" {
+  source             = "git::https://github.com/tmknom/terraform-aws-iam-role.git?ref=tags/1.0.0"
+  name               = "minimal"
+  assume_role_policy = "${data.aws_iam_policy_document.assume_role_policy.json}"
+  policy             = "${data.aws_iam_policy_document.policy.json}"
+}
+
+data "aws_iam_policy_document" "assume_role_policy" {
+  statement {
+    effect = "Allow"
+
+    principals {
+      type        = "Service"
+      identifiers = ["ec2.amazonaws.com"]
+    }
+
+    actions = [
+      "sts:AssumeRole",
+    ]
+  }
+}
+
+data "aws_iam_policy_document" "policy" {
+  statement {
+    effect = "Allow"
+
+    actions = [
+      "ec2:Describe*",
+    ]
+
+    resources = ["*"]
+  }
+}
+```
+
+### Complete
+
+```hcl
+module "iam_role" {
+  source             = "git::https://github.com/tmknom/terraform-aws-iam-role.git?ref=tags/1.0.0"
+  name               = "complete"
+  assume_role_policy = "${data.aws_iam_policy_document.assume_role_policy.json}"
+  policy             = "${data.aws_iam_policy_document.policy.json}"
+
+  path        = "/ec2/"
+  description = "Describe EC2"
+}
+
+data "aws_iam_policy_document" "assume_role_policy" {
+  # Omitted below.
+}
+
+data "aws_iam_policy_document" "policy" {
+  # Omitted below.
+}
 ```
 
 ## Examples
@@ -22,11 +82,29 @@ cd terraform-aws-sample
 
 ## Inputs
 
-Write your Terraform module inputs.
+| Name               | Description                                                                    |  Type  |        Default         | Required |
+| ------------------ | ------------------------------------------------------------------------------ | :----: | :--------------------: | :------: |
+| assume_role_policy | The policy that grants an entity permission to assume the role.                | string |           -            |   yes    |
+| description        | The description of the role and the policy.                                    | string | `Managed by Terraform` |    no    |
+| name               | The name of the role. If omitted, Terraform will assign a random, unique name. | string |           -            |   yes    |
+| path               | Path in which to create the role and the policy.                               | string |          `/`           |    no    |
+| policy             | The policy document. This is a JSON formatted string.                          | string |           -            |   yes    |
 
 ## Outputs
 
-Write your Terraform module outputs.
+| Name                   | Description                                         |
+| ---------------------- | --------------------------------------------------- |
+| iam_policy_arn         | The ARN assigned by AWS to this policy.             |
+| iam_policy_description | The description of the policy.                      |
+| iam_policy_document    | The policy document.                                |
+| iam_policy_id          | The policy's ID.                                    |
+| iam_policy_name        | The name of the policy.                             |
+| iam_policy_path        | The path of the policy in IAM.                      |
+| iam_role_arn           | The Amazon Resource Name (ARN) specifying the role. |
+| iam_role_create_date   | The creation date of the IAM role.                  |
+| iam_role_description   | The description of the role.                        |
+| iam_role_name          | The name of the role.                               |
+| iam_role_unique_id     | The stable and unique string identifying the role.  |
 
 ## Development
 
