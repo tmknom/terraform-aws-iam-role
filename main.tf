@@ -9,6 +9,8 @@ resource "aws_iam_role" "default" {
 
   path        = "${var.path}"
   description = "${var.description}"
+
+  max_session_duration = "${var.max_session_duration}"
 }
 
 # https://www.terraform.io/docs/providers/aws/r/iam_policy.html

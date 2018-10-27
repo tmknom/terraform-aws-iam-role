@@ -10,6 +10,8 @@ module "iam_role" {
 
   path        = "/ec2/"
   description = "Describe EC2"
+
+  max_session_duration = 7200
 }
 
 data "aws_iam_policy_document" "assume_role_policy" {
