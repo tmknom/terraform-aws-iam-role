@@ -7,7 +7,7 @@ resource "aws_iam_role" "default" {
   name               = "${var.name}"
   assume_role_policy = "${var.assume_role_policy}"
 
-  path = "${var.path}"
+  path        = "${var.path}"
   description = "${var.description}"
 }
 
@@ -16,7 +16,7 @@ resource "aws_iam_policy" "default" {
   name   = "${var.name}"
   policy = "${var.policy}"
 
-  path = "${var.path}"
+  path        = "${var.path}"
   description = "${var.description}"
 }
 
