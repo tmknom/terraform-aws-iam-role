@@ -14,6 +14,10 @@ output "iam_role_unique_id" {
   value = "${module.iam_role.iam_role_unique_id}"
 }
 
+output "iam_role_description" {
+  value = "${module.iam_role.iam_role_description}"
+}
+
 output "iam_role_name" {
   value = "${module.iam_role.iam_role_name}"
 }
@@ -24,6 +28,10 @@ output "iam_policy_id" {
 
 output "iam_policy_arn" {
   value = "${module.iam_role.iam_policy_arn}"
+}
+
+output "iam_policy_description" {
+  value = "${module.iam_role.iam_policy_description}"
 }
 
 output "iam_policy_name" {
