@@ -22,3 +22,9 @@ variable "path" {
   type        = "string"
   description = "Path in which to create the role and the policy."
 }
+
+variable "description" {
+  default     = "Managed by Terraform"
+  type        = "string"
+  description = "The description of the role and the policy."
+}
