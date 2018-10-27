@@ -6,6 +6,13 @@
 
 Terraform module template following [Standard Module Structure](https://www.terraform.io/docs/modules/create.html#standard-module-structure).
 
+## Description
+
+Provision IAM Role and its own [Customer Managed Policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html#customer-managed-policies).
+This module provides recommended settings.
+
+- Use managed policies instead of inline policies
+
 ## Usage
 
 Named `terraform-<PROVIDER>-<NAME>`. Module repositories must use this three-part name format.
