@@ -13,3 +13,9 @@ resource "aws_iam_policy" "default" {
   name   = "${var.name}"
   policy = "${var.policy}"
 }
+
+# https://www.terraform.io/docs/providers/aws/r/iam_role_policy_attachment.html
+resource "aws_iam_role_policy_attachment" "default" {
+  role       = "${aws_iam_role.default.name}"
+  policy_arn = "${aws_iam_policy.default.arn}"
+}
