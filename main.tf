@@ -7,3 +7,9 @@ resource "aws_iam_role" "default" {
   name               = "${var.name}"
   assume_role_policy = "${var.assume_role_policy}"
 }
+
+# https://www.terraform.io/docs/providers/aws/r/iam_policy.html
+resource "aws_iam_policy" "default" {
+  name   = "${var.name}"
+  policy = "${var.policy}"
+}

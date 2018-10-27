@@ -11,3 +11,8 @@ variable "assume_role_policy" {
   type        = "string"
   description = "The policy that grants an entity permission to assume the role."
 }
+
+variable "policy" {
+  type        = "string"
+  description = "The policy document. This is a JSON formatted string."
+}
