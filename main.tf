@@ -8,6 +8,7 @@ resource "aws_iam_role" "default" {
   assume_role_policy = "${var.assume_role_policy}"
 
   path = "${var.path}"
+  description = "${var.description}"
 }
 
 # https://www.terraform.io/docs/providers/aws/r/iam_policy.html
@@ -16,6 +17,7 @@ resource "aws_iam_policy" "default" {
   policy = "${var.policy}"
 
   path = "${var.path}"
+  description = "${var.description}"
 }
 
 # https://www.terraform.io/docs/providers/aws/r/iam_role_policy_attachment.html
