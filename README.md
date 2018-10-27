@@ -15,11 +15,64 @@ This module provides recommended settings.
 
 ## Usage
 
-Named `terraform-<PROVIDER>-<NAME>`. Module repositories must use this three-part name format.
+### Minimal
 
-```sh
-curl -fsSL https://raw.githubusercontent.com/tmknom/terraform-aws-iam-role/master/install | sh -s terraform-aws-sample
-cd terraform-aws-sample
+```hcl
+module "iam_role" {
+  source             = "git::https://github.com/tmknom/terraform-aws-iam-role.git?ref=tags/1.0.0"
+  name               = "minimal"
+  assume_role_policy = "${data.aws_iam_policy_document.assume_role_policy.json}"
+  policy             = "${data.aws_iam_policy_document.policy.json}"
+}
+
+data "aws_iam_policy_document" "assume_role_policy" {
+  statement {
+    effect = "Allow"
+
+    principals {
+      type        = "Service"
+      identifiers = ["ec2.amazonaws.com"]
+    }
+
+    actions = [
+      "sts:AssumeRole",
+    ]
+  }
+}
+
+data "aws_iam_policy_document" "policy" {
+  statement {
+    effect = "Allow"
+
+    actions = [
+      "ec2:Describe*",
+    ]
+
+    resources = ["*"]
+  }
+}
+```
+
+### Complete
+
+```hcl
+module "iam_role" {
+  source             = "git::https://github.com/tmknom/terraform-aws-iam-role.git?ref=tags/1.0.0"
+  name               = "complete"
+  assume_role_policy = "${data.aws_iam_policy_document.assume_role_policy.json}"
+  policy             = "${data.aws_iam_policy_document.policy.json}"
+
+  path        = "/ec2/"
+  description = "Describe EC2"
+}
+
+data "aws_iam_policy_document" "assume_role_policy" {
+  # Omitted below.
+}
+
+data "aws_iam_policy_document" "policy" {
+  # Omitted below.
+}
 ```
 
 ## Examples
