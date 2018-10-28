@@ -66,7 +66,8 @@ module "iam_role" {
   path        = "/ec2/"
   description = "Describe EC2"
 
-  max_session_duration = 7200
+  max_session_duration  = 7200
+  force_detach_policies = true
 }
 
 data "aws_iam_policy_document" "assume_role_policy" {
@@ -85,14 +86,15 @@ data "aws_iam_policy_document" "policy" {
 
 ## Inputs
 
-| Name                 | Description                                                                            |  Type  |        Default         | Required |
-| -------------------- | -------------------------------------------------------------------------------------- | :----: | :--------------------: | :------: |
-| assume_role_policy   | The policy that grants an entity permission to assume the role.                        | string |           -            |   yes    |
-| description          | The description of the role and the policy.                                            | string | `Managed by Terraform` |    no    |
-| max_session_duration | The maximum session duration (in seconds) that you want to set for the specified role. | string |         `3600`         |    no    |
-| name                 | The name of the role. If omitted, Terraform will assign a random, unique name.         | string |           -            |   yes    |
-| path                 | Path in which to create the role and the policy.                                       | string |          `/`           |    no    |
-| policy               | The policy document. This is a JSON formatted string.                                  | string |           -            |   yes    |
+| Name                  | Description                                                                            |  Type  |        Default         | Required |
+| --------------------- | -------------------------------------------------------------------------------------- | :----: | :--------------------: | :------: |
+| assume_role_policy    | The policy that grants an entity permission to assume the role.                        | string |           -            |   yes    |
+| description           | The description of the role and the policy.                                            | string | `Managed by Terraform` |    no    |
+| force_detach_policies | Specifies to force detaching any policies the role has before destroying it.           | string |        `false`         |    no    |
+| max_session_duration  | The maximum session duration (in seconds) that you want to set for the specified role. | string |         `3600`         |    no    |
+| name                  | The name of the role. If omitted, Terraform will assign a random, unique name.         | string |           -            |   yes    |
+| path                  | Path in which to create the role and the policy.                                       | string |          `/`           |    no    |
+| policy                | The policy document. This is a JSON formatted string.                                  | string |           -            |   yes    |
 
 ## Outputs
 
