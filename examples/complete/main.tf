@@ -7,7 +7,8 @@ module "iam_role" {
   path        = "/ec2/"
   description = "Describe EC2"
 
-  max_session_duration = 7200
+  max_session_duration  = 7200
+  force_detach_policies = true
 }
 
 data "aws_iam_policy_document" "assume_role_policy" {

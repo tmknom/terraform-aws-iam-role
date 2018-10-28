@@ -34,3 +34,9 @@ variable "max_session_duration" {
   type        = "string"
   description = "The maximum session duration (in seconds) that you want to set for the specified role."
 }
+
+variable "force_detach_policies" {
+  default     = false
+  type        = "string"
+  description = "Specifies to force detaching any policies the role has before destroying it."
+}
