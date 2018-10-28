@@ -1,7 +1,3 @@
-# Output Configuration
-#
-# https://www.terrafsorm.io/docs/configuration/outputs.html
-
 output "iam_role_arn" {
   value = "${module.iam_role.iam_role_arn}"
 }
