@@ -1,7 +1,3 @@
-# Module Configuration
-#
-# https://www.terraform.io/docs/configuration/modules.html
-
 module "iam_role" {
   source             = "../../"
   name               = "minimal"
