@@ -8,7 +8,8 @@ Terraform module which creates IAM Role and IAM Policy resources on AWS.
 
 ## Description
 
-Provision IAM Role and its own [Customer Managed Policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html#customer-managed-policies).
+Provision [IAM Role](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html)
+and its own [Customer Managed Policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html#customer-managed-policies).
 This module provides recommended settings.
 
 - Use managed policies instead of inline policies
