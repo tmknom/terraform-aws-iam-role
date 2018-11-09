@@ -9,8 +9,5 @@ jobs:
           name: Setup makefile
           command: make
       - run:
-          name: Install requirements
-          command: make install
-      - run:
-          name: Lint code
-          command: make lint
+          name: Execute CI build
+          command: make cibuild
