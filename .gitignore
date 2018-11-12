@@ -15,4 +15,4 @@
 .envrc
 
 # Auto include makefiles
-.terraform.mk
+.Makefile.terraform

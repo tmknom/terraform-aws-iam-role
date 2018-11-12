@@ -1,9 +1,9 @@
 # https://github.com/tmknom/template-terraform-module
 TERRAFORM_VERSION := 0.11.10
--include .terraform.mk
+-include .Makefile.terraform
 
-.terraform.mk:
-	curl -sSL https://raw.githubusercontent.com/tmknom/template-terraform-module/master/terraform.mk -o .terraform.mk
+.Makefile.terraform:
+	curl -sSL https://raw.githubusercontent.com/tmknom/template-terraform-module/master/Makefile.terraform -o .Makefile.terraform
 
 MINIMAL_DIR := ./examples/minimal
 COMPLETE_DIR := ./examples/complete
