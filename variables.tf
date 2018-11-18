@@ -1,7 +1,3 @@
-# Input Variable Configuration
-#
-# https://www.terraform.io/docs/configuration/variables.html
-
 variable "name" {
   type        = "string"
   description = "The name of the role. If omitted, Terraform will assign a random, unique name."

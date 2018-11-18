@@ -1,7 +1,3 @@
-# Output Configuration
-#
-# https://www.terraform.io/docs/configuration/outputs.html
-
 output "iam_role_arn" {
   value       = "${aws_iam_role.default.arn}"
   description = "The Amazon Resource Name (ARN) specifying the role."
