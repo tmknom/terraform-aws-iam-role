@@ -20,10 +20,10 @@ This module provides recommended settings.
 
 ```hcl
 module "iam_role" {
-  source             = "git::https://github.com/tmknom/terraform-aws-iam-role.git?ref=tags/1.2.0"
+  source             = "git::https://github.com/tmknom/terraform-aws-iam-role.git?ref=tags/2.0.0"
   name               = "minimal"
-  assume_role_policy = "${data.aws_iam_policy_document.assume_role_policy.json}"
-  policy             = "${data.aws_iam_policy_document.policy.json}"
+  assume_role_policy = data.aws_iam_policy_document.assume_role_policy.json
+  policy             = data.aws_iam_policy_document.policy.json
 }
 
 data "aws_iam_policy_document" "assume_role_policy" {
@@ -58,10 +58,10 @@ data "aws_iam_policy_document" "policy" {
 
 ```hcl
 module "iam_role" {
-  source             = "git::https://github.com/tmknom/terraform-aws-iam-role.git?ref=tags/1.2.0"
+  source             = "git::https://github.com/tmknom/terraform-aws-iam-role.git?ref=tags/2.0.0"
   name               = "complete"
-  assume_role_policy = "${data.aws_iam_policy_document.assume_role_policy.json}"
-  policy             = "${data.aws_iam_policy_document.policy.json}"
+  assume_role_policy = data.aws_iam_policy_document.assume_role_policy.json
+  policy             = data.aws_iam_policy_document.policy.json
 
   path        = "/ec2/"
   description = "Describe EC2"
