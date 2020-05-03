@@ -1,8 +1,8 @@
 module "iam_role" {
   source             = "../../"
   name               = "minimal"
-  assume_role_policy = "${data.aws_iam_policy_document.assume_role_policy.json}"
-  policy             = "${data.aws_iam_policy_document.policy.json}"
+  assume_role_policy = data.aws_iam_policy_document.assume_role_policy.json
+  policy             = data.aws_iam_policy_document.policy.json
 }
 
 data "aws_iam_policy_document" "assume_role_policy" {
