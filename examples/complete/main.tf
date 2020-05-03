@@ -1,8 +1,8 @@
 module "iam_role" {
   source             = "../../"
   name               = "complete"
-  assume_role_policy = "${data.aws_iam_policy_document.assume_role_policy.json}"
-  policy             = "${data.aws_iam_policy_document.policy.json}"
+  assume_role_policy = data.aws_iam_policy_document.assume_role_policy.json
+  policy             = data.aws_iam_policy_document.policy.json
 
   path        = "/ec2/"
   description = "Describe EC2"
