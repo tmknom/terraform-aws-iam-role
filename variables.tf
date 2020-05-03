@@ -33,6 +33,6 @@ variable "max_session_duration" {
 
 variable "force_detach_policies" {
   default     = false
-  type        = string
+  type        = bool
   description = "Specifies to force detaching any policies the role has before destroying it."
 }
