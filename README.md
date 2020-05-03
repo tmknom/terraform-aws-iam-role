@@ -114,7 +114,7 @@ data "aws_iam_policy_document" "policy" {
 
 ## Development
 
-### Requirements
+### Development Requirements
 
 - [Docker](https://www.docker.com/)
 
